@@ -1,0 +1,177 @@
+{
+  "id": "smoke-test",
+  "version": "2.0",
+  "name": "Smoke Test",
+  "url": "https://tetonidaho.com",
+  "tests": [
+    {
+      "id": "home-page-test",
+      "name": "Home Page Test",
+      "commands": [
+        {
+          "command": "open",
+          "target": "/",
+          "value": ""
+        },
+        {
+          "command": "setWindowSize",
+          "target": "1200x800",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "css=.site-logo",
+          "value": ""
+        },
+        {
+          "command": "assertText",
+          "target": "css=h1",
+          "value": "Teton Idaho Chamber of Commerce"
+        },
+        {
+          "command": "assertTitle",
+          "target": "Teton Idaho CoC",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "css=.spotlight-container .spotlight:nth-child(1)",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "css=.spotlight-container .spotlight:nth-child(2)",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "linkText=Join Us",
+          "value": ""
+        },
+        {
+          "command": "click",
+          "target": "linkText=Join Us",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "css=.join-page",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "directory-page-test",
+      "name": "Directory Page Test",
+      "commands": [
+        {
+          "command": "open",
+          "target": "/directory",
+          "value": ""
+        },
+        {
+          "command": "click",
+          "target": "css=.grid-view-btn",
+          "value": ""
+        },
+        {
+          "command": "assertText",
+          "target": "css=.business-card",
+          "value": "*Teton Turf and Tree*"
+        },
+        {
+          "command": "click",
+          "target": "css=.list-view-btn",
+          "value": ""
+        },
+        {
+          "command": "assertText",
+          "target": "css=.business-list-item",
+          "value": "*Teton Turf and Tree*"
+        }
+      ]
+    },
+    {
+      "id": "join-page-test",
+      "name": "Join Page Test",
+      "commands": [
+        {
+          "command": "open",
+          "target": "/join",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "name=firstName",
+          "value": ""
+        },
+        {
+          "command": "type",
+          "target": "name=firstName",
+          "value": "John"
+        },
+        {
+          "command": "type",
+          "target": "name=lastName",
+          "value": "Doe"
+        },
+        {
+          "command": "click",
+          "target": "css=.next-step-btn",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "name=email",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "admin-page-test",
+      "name": "Admin Page Test",
+      "commands": [
+        {
+          "command": "open",
+          "target": "/admin",
+          "value": ""
+        },
+        {
+          "command": "assertElementPresent",
+          "target": "name=username",
+          "value": ""
+        },
+        {
+          "command": "type",
+          "target": "name=username",
+          "value": "wronguser"
+        },
+        {
+          "command": "type",
+          "target": "name=password",
+          "value": "wrongpass"
+        },
+        {
+          "command": "click",
+          "target": "css=.login-btn",
+          "value": ""
+        },
+        {
+          "command": "assertText",
+          "target": "css=.error-message",
+          "value": "Invalid username or password"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "smoke-suite",
+      "name": "Smoke Test Suite",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": ["home-page-test", "directory-page-test", "join-page-test", "admin-page-test"]
+    }
+  ]
+} 
